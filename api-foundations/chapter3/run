@@ -1,6 +1,8 @@
 #!/bin/bash
 source ../shell/common.sh
 
+APP="foundations"
+
 gvt fetch "github.com/davecgh/go-spew/spew"
 
 FILES=$(ls *.go | sort)
