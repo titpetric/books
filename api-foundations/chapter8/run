@@ -1,0 +1,26 @@
+#!/bin/bash
+source ../shell/common.sh
+
+APP="foundations"
+
+gvt fetch "github.com/garyburd/redigo/redis"
+gvt fetch "github.com/garyburd/redigo/redis"
+gvt fetch "github.com/youtube/vitess/go/pools"
+gvt fetch "golang.org/x/net/context"
+
+# install flamegraph scripts
+if [ ! -d "/opt/flamegraph" ]; then
+	echo "Installing flamegraph (git clone)"
+	git clone --depth=1 https://github.com/brendangregg/FlameGraph.git /opt/flamegraph
+fi
+
+# install go-torch using docker
+if [ ! -f "bin/go-torch" ]; then
+	echo "Installing go-torch via docker"
+	docker run --net=party --rm=true --env-file /tmp/docker.env -it -v $(pwd)/bin:/go/bin golang go get github.com/uber/go-torch
+fi
+
+FILES=$(ls *.go | sort)
+for FILE in $FILES; do
+	go run $FILE
+done

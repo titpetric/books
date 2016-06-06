@@ -1,0 +1,3 @@
+#!/bin/bash
+PATH="$PATH:/opt/flamegraph"
+bin/go-torch --time=15 --file "torch.svg" --url http://10.1.1.2:8080

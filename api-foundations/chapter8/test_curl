@@ -1,0 +1,7 @@
+#!/bin/bash
+LINKS="http://localhost:8080/set?key=foo&value=bar http://localhost:8080/set?key=name&value=Tit%20Petric http://localhost:8080/get?key=name http://localhost:8080/getAll"
+for LINK in $LINKS; do
+	echo '$ curl' $LINK
+	curl $LINK
+	echo
+done

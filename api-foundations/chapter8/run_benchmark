@@ -1,0 +1,2 @@
+#!/bin/bash
+ab -c 4 -n 40000 http://localhost:8080/get?key=name
