@@ -12,15 +12,15 @@ type Cat struct {
 	hypoallergenic bool
 }
 
+type Pet interface {
+	getName() string
+}
+
 func (d Dog) getName() string {
 	return d.name
 }
 func (c Cat) getName() string {
 	return c.name
-}
-
-type Pet interface {
-	getName() string
 }
 
 func main() {
