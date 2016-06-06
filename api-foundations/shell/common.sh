@@ -14,7 +14,7 @@ function go {
 	        APP="app"
 	fi
 	WORKDIR="/go/src/$APP"
-	docker run $ARGS --rm=true --env-file /tmp/docker.env -i -v $(pwd):$WORKDIR -w $WORKDIR golang go "$@"
+	docker run $ARGS --rm=true --env-file /tmp/docker.env -it -v $(pwd):$WORKDIR -w $WORKDIR golang go "$@"
 	echo ""
 }
 
