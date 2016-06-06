@@ -1,0 +1,17 @@
+#!/bin/bash
+source ../shell/common.sh
+
+APP="foundations"
+
+gvt fetch "github.com/garyburd/redigo/redis"
+gvt fetch "github.com/youtube/vitess/go/pools"
+gvt fetch "golang.org/x/net/context"
+
+FOLDERS="t1 t2 t3"
+for FOLDER in $FOLDERS; do
+	rsync -a vendor/ $FOLDER/vendor/
+	cd $FOLDER
+	go test -coverprofile=coverage.out -covermode count
+	go tool cover -html=coverage.out -o coverage.html
+	cd ..
+done
