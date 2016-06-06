@@ -1,0 +1,8 @@
+$ ./flags
+Server port: 8080
+$ ./flags -port=80
+Server port: 80
+$ PORT=80 ./flags
+Server port: 8080
+$ GO_PORT=80 ./flags
+Server port: 80

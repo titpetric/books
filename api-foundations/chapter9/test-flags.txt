@@ -1,0 +1,8 @@
+$ go run flags.go
+Server port: 8080
+$ go run flags.go -port=80
+Server port: 80
+$ PORT=80 go run flags.go
+Server port: 8080
+$ GO_PORT=80 go run flags.go
+Server port: 80

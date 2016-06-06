@@ -1,0 +1,20 @@
+#!/bin/bash
+source ../shell/common.sh
+function run_case {
+	echo '$' "$@"
+	. "$@"
+}
+
+function run_case2 {
+	echo '$' "$@"
+}
+
+run_case go run flags.go
+run_case go run flags.go -port=80
+
+run_case2 PORT=80 go run flags.go
+PORT=80 go run flags.go
+
+run_case2 GO_PORT=80 go run flags.go
+GO_PORT=80 go run flags.go
+
