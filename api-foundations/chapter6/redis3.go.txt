@@ -1,0 +1,11 @@
+== go run redis3.go ==
+New redis connection: redis1:6379
+New redis connection: redis2:6379
+[0.0000] Start
+[0.2568] Run sleep 200ms
+DEBUG: bootstrap.ResourceConn{Conn:(*redis.conn)(0xc8200e01e0)}
+[0.7156] Run sleep 100ms
+DEBUG: bootstrap.ResourceConn{Conn:(*redis.conn)(0xc8200e00a0)}
+[101.4009] End Sleep 100ms, result OK
+[201.0576] End Sleep 200ms, result OK
+

@@ -1,0 +1,13 @@
+#!/bin/bash
+source ../shell/common.sh
+
+APP="foundations"
+
+gvt fetch "github.com/garyburd/redigo/redis"
+gvt fetch "github.com/youtube/vitess/go/pools"
+gvt fetch "golang.org/x/net/context"
+
+FILES=$(ls redis*.go | sort)
+for FILE in $FILES; do
+	go run $FILE | tee "$FILE.txt"
+done
