@@ -7,7 +7,7 @@ gvt fetch "github.com/garyburd/redigo/redis"
 gvt fetch "github.com/youtube/vitess/go/pools"
 gvt fetch "golang.org/x/net/context"
 
-FILES=$(ls redis*.go | sort)
+FILES=$(ls *.go | sort)
 for FILE in $FILES; do
 	go run $FILE | tee "$FILE.txt"
 done
