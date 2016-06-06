@@ -1,0 +1,15 @@
+[
+  {
+    "name": "Fuzzy's",
+    "location": "New York, 5th and Broadway",
+    "dogs": [
+      {
+        "name": "Whiskers",
+        "breed": "Pomeranian"
+      },
+      {
+        "name": "Trinity"
+      }
+    ]
+  }
+]

@@ -1,0 +1,9 @@
+#!/bin/bash
+source ../shell/common.sh
+
+gvt fetch "github.com/davecgh/go-spew/spew"
+
+FILES=$(ls *.go | sort)
+for FILE in $FILES; do
+	go run $FILE
+done

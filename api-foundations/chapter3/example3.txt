@@ -1,0 +1,17 @@
+(main.PetStoreList) (len=1 cap=4) {
+ (*main.Petstore)(0xc820012370)({
+  Name: (string) (len=7) "Fuzzy's",
+  Location: (string) (len=26) "New York, 5th and Broadway",
+  Dogs: ([]*main.Pet) (len=2 cap=4) {
+   (*main.Pet)(0xc82000a360)({
+    Name: (string) (len=8) "Whiskers",
+    Breed: (string) (len=10) "Pomeranian"
+   }),
+   (*main.Pet)(0xc82000a3c0)({
+    Name: (string) (len=7) "Trinity",
+    Breed: (string) ""
+   })
+  },
+  Cats: ([]*main.Pet) <nil>
+ })
+}
