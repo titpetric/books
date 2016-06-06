@@ -19,6 +19,7 @@ function go {
 }
 
 function gvt {
+	echo "== gvt" "$@" "=="
 	if [ $1 == "fetch" ]; then
 		BASE="vendor/"
 		if [ -d "$BASE$2" ]; then
