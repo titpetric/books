@@ -1,0 +1,7 @@
+#!/bin/bash
+NAMES="redis redis1 redis2"
+DOCKERFILE="redis"
+for NAME in $NAMES; do
+	docker rm -f $NAME
+	docker run --restart=always -h $NAME --name $NAME --net=party -d $DOCKERFILE
+done
