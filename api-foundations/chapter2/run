@@ -1,11 +1,11 @@
 #!/bin/bash
 source ../shell/common.sh
 
+APP="foundations"
+
 gvt fetch "github.com/davecgh/go-spew/spew"
 
-go run chapter2b.go
-go run reflection.go
-go run type1.go
-go run type2.go
-go run type3.go
-go run type5.go
+FILES=$(ls *.go | sort)
+for FILE in $FILES; do
+	go run $FILE
+done

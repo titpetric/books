@@ -1,6 +1,6 @@
 package main
 
-import "app/bootstrap"
+import "foundations/bootstrap"
 import "fmt"
 
 func main() {
