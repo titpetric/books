@@ -1,0 +1,11 @@
+== go run main_sqlx2.go ==
+New mysql connection: 1
+([]main.Database) (len=2 cap=2) {
+ (main.Database) {
+  Name: (string) (len=18) "information_schema"
+ },
+ (main.Database) {
+  Name: (string) (len=3) "api"
+ }
+}
+

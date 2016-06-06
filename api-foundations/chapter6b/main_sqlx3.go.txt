@@ -1,0 +1,9 @@
+== go run main_sqlx3.go ==
+New mysql connection: 1
+New mysql connection: 2
+[0.0000] Start
+[0.0298] Run sleep 200ms
+[0.1138] Run sleep 100ms
+[100.7097] End Sleep 100ms, result 0
+[201.0044] End Sleep 200ms, result 0
+

@@ -1,0 +1,4 @@
+== go run main_sql.go ==
+Database: information_schema
+(string) (len=2) "db"
+
