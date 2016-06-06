@@ -1,4 +1,4 @@
-package bootstrap;
+package bootstrap
 
 import "fmt"
 import "time"
@@ -18,16 +18,16 @@ func (r SqlxResourceConn) Close() {
 }
 
 var (
-	pool *pools.ResourcePool;
-	hasPool = false;
-	connectionIndex = 1;
+	pool            *pools.ResourcePool
+	hasPool         = false
+	connectionIndex = 1
 )
 
 func SqlxConnectionPool() *pools.ResourcePool {
-	if (!hasPool) {
-		capacity := 2; // hold two connections
-		maxCapacity := 4; // hold up to 4 connections
-		idleTimeout := time.Minute;
+	if !hasPool {
+		capacity := 2    // hold two connections
+		maxCapacity := 4 // hold up to 4 connections
+		idleTimeout := time.Minute
 		pool = pools.NewResourcePool(func() (pools.Resource, error) {
 			db, err := sqlx.Open("mysql", "api:api@tcp(db1:3306)/api")
 			fmt.Printf("New mysql connection: %d\n", connectionIndex)
@@ -35,15 +35,15 @@ func SqlxConnectionPool() *pools.ResourcePool {
 			return SqlxResourceConn{db}, err
 		}, capacity, maxCapacity, idleTimeout)
 	}
-	return pool;
+	return pool
 }
 
-func SqlxGetConnection() (SqlxResourceConn,error) {
-	ctx := context.TODO();
-	db, err := pool.Get(ctx);
-	return db.(SqlxResourceConn), err;
+func SqlxGetConnection() (SqlxResourceConn, error) {
+	ctx := context.TODO()
+	db, err := pool.Get(ctx)
+	return db.(SqlxResourceConn), err
 }
 
 func SqlxReleaseConnection(r SqlxResourceConn) {
-	pool.Put(r);
+	pool.Put(r)
 }
