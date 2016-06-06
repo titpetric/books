@@ -1,0 +1,10 @@
+#!/bin/bash
+source ../shell/common.sh
+
+gvt fetch "github.com/bmizerany/pat"
+gvt fetch "github.com/gorilla/mux"
+
+FILES=$(ls *.go | sort)
+for FILE in $FILES; do
+	go run $FILE
+done
