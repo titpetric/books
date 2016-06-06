@@ -1,4 +1,3 @@
 == go run redis1.go ==
 [0.0000] Starting
-[0.6152] Response PONG, err <nil>
-
+[0.4575] Response PONG, err <nil>

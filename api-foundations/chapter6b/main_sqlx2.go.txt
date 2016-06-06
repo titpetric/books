@@ -8,4 +8,3 @@ New mysql connection: 1
   Name: (string) (len=3) "api"
  }
 }
-

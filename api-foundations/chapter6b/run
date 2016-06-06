@@ -13,3 +13,10 @@ FILES=$(ls *.go | sort)
 for FILE in $FILES; do
 	go run $FILE | tee "$FILE.txt"
 done
+
+# strip \r
+sed -i 's/\cM//g' *txt
+# strip trailing spaces/lines
+sed -i -e :a -e '/^\n*$/{$d;N;};/\n$/ba' *txt
+# strip off final newline
+truncate -s -1 *txt

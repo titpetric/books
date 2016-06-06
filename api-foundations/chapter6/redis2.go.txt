@@ -1,5 +1,4 @@
 == go run redis2.go ==
 [0.0000] Starting
-[100.4709] End Sleep 100ms, result OK err <nil>
-[301.2542] End Sleep 200ms, result OK err <nil>
-
+[101.0354] End Sleep 100ms, result OK err <nil>
+[301.9424] End Sleep 200ms, result OK err <nil>
