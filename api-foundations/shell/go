@@ -1,0 +1,2 @@
+#!/bin/bash
+docker run --net=party -p 8080:80 --rm=true -it -v `pwd`:/go/src/app -w /go/src/app golang go "$@"
