@@ -1,0 +1,13 @@
+{
+	"version": 0,
+	"dependencies": [
+		{
+			"importpath": "github.com/namsral/flag",
+			"repository": "https://github.com/namsral/flag",
+			"vcs": "git",
+			"revision": "881a43080604bcf99ab1118a814d1cb2c268fc36",
+			"branch": "master",
+			"notests": true
+		}
+	]
+}
