@@ -1,0 +1,42 @@
+#!/bin/bash
+#
+# services/mysql/bin/run -> MYPATH= services/mysql, NAME= mysql
+#
+MYPATH=$(dirname $(dirname $(readlink -f $0)))
+NAME=$(basename $MYPATH)
+if [ ! -d "$MYPATH/data" ]; then
+    mkdir -p $MYPATH/data
+fi
+
+DOCKERIMAGE="percona:latest"
+
+#
+# you can use this image if you want
+# percona packaged with xtrabackup
+#
+#DOCKERIMAGE="titpetric/percona-xtrabackup"
+
+#
+# generate root password to file for convenience
+#
+PASSWORD="default"
+perl -pi -e "s/^password.+$/password=$PASSWORD/g" ../conf/.my.cnf
+
+if [ ! -d "$MYPATH/data" ]; then
+    mkdir -p $MYPATH/data
+fi
+
+# stop and remove existing container and start a new one
+
+docker stop $NAME
+docker rm $NAME
+docker run --restart=always \
+    -h $NAME \
+    --name $NAME \
+    --net=party \
+    -v /src/$NAME/backups:/backups \
+    -v /src/$NAME/conf/conf.d:/etc/mysql/conf.d \
+    -v /src/$NAME/data:/var/lib/mysql \
+    -e MYSQL_ROOT_PASSWORD=$PASSWORD \
+    -d $DOCKERIMAGE
+docker cp /src/$NAME/conf/.my.cnf $NAME:/root/
