@@ -1,0 +1,5 @@
+#!/bin/bash
+MYPATH=$(dirname $(dirname $(readlink -f $0)))
+NAME=$(basename $MYPATH)
+docker rm -f $NAME
+exit 0

@@ -8,13 +8,13 @@ if [ ! -d "$MYPATH/data" ]; then
     mkdir -p $MYPATH/data
 fi
 
-DOCKERIMAGE="percona:latest"
+DOCKER_IMAGE="percona:latest"
 
 #
 # you can use this image if you want
 # percona packaged with xtrabackup
 #
-#DOCKERIMAGE="titpetric/percona-xtrabackup"
+#DOCKER_IMAGE="titpetric/percona-xtrabackup"
 
 #
 # generate root password to file for convenience
@@ -38,5 +38,5 @@ docker run --restart=always \
     -v /src/$NAME/conf/conf.d:/etc/mysql/conf.d \
     -v /src/$NAME/data:/var/lib/mysql \
     -e MYSQL_ROOT_PASSWORD=$PASSWORD \
-    -d $DOCKERIMAGE
+    -d $DOCKER_IMAGE
 docker cp /src/$NAME/conf/.my.cnf $NAME:/root/
