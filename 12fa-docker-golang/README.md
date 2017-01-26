@@ -1,4 +1,4 @@
-# The 12 Factors of Go
+# The 12 Factors of Docker & Go
 
 This is a general roadmap what to cover within the book. It lists external
 projects and references for the type of software which can be used to
