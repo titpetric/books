@@ -1,0 +1,13 @@
+{
+	"version": 0,
+	"dependencies": [
+		{
+			"importpath": "github.com/garyburd/redigo",
+			"repository": "https://github.com/garyburd/redigo",
+			"vcs": "git",
+			"revision": "908534c8b97586a4597e3fa195875d2d26502b97",
+			"branch": "master",
+			"notests": true
+		}
+	]
+}
