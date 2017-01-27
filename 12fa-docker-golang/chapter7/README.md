@@ -9,4 +9,4 @@ The whole thing is just cool, small, nice, sexy, sweet. As the author, I am bias
 
 Runs in docker with `./run`.
 
-![Screenshot](../images/twitter.png)
+![Screenshot](../images/twitter-app.png)
