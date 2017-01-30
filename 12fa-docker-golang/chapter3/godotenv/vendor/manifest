@@ -1,0 +1,21 @@
+{
+	"version": 0,
+	"dependencies": [
+		{
+			"importpath": "github.com/joho/godotenv",
+			"repository": "https://github.com/joho/godotenv",
+			"vcs": "git",
+			"revision": "726cc8b906e3d31c70a9671c90a13716a8d3f50d",
+			"branch": "master",
+			"notests": true
+		},
+		{
+			"importpath": "github.com/namsral/flag",
+			"repository": "https://github.com/namsral/flag",
+			"vcs": "git",
+			"revision": "7fa59bdb55485001d702d9b6e15367cdf26bfde8",
+			"branch": "master",
+			"notests": true
+		}
+	]
+}
