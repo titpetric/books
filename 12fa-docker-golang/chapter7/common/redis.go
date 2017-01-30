@@ -5,7 +5,7 @@ import "github.com/garyburd/redigo/redis"
 
 type Redis struct {
 	conn                                      redis.Conn
-	address                         string
+	address                                   string
 	connectTimeout, readTimeout, writeTimeout time.Duration
 }
 
