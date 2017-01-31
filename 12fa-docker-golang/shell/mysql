@@ -1,0 +1,18 @@
+#!/bin/bash
+NAME="mysql"
+APP_DIR=$(dirname $(readlink -f $0))
+mkdir -p ${APP_DIR}/data/$NAME
+docker stop $NAME
+docker rm $NAME
+
+DOCKERFILE="titpetric/percona-xtrabackup"
+
+docker stop $NAME
+docker rm $NAME
+docker run --restart=always \
+    -h $NAME \
+    --name $NAME \
+    --net=party \
+    -v ${APP_DIR}/data/$NAME/data:/var/lib/mysql \
+    -e MYSQL_ALLOW_EMPTY_PASSWORD="yes" \
+    -d $DOCKERFILE

@@ -1,0 +1,5 @@
+#!/bin/bash
+NAME="gogs"
+docker stop $NAME
+cd data && tar -zcvf gogs-backup-$(date +"%Y%m%d").tgz gogs/ && cd ..
+docker start $NAME
