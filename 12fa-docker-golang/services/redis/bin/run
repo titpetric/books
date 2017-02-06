@@ -3,7 +3,12 @@ MYPATH=$(dirname $(dirname $(readlink -f $0)))
 NAME=$(basename $MYPATH)
 DOCKER_IMAGE=$(<$(dirname $(dirname $(readlink -f $0)))/docker.image)
 
+# remove redis warnings
+sysctl vm.overcommit_memory=1
+echo never > /sys/kernel/mm/transparent_hugepage/enabled
+
 SYSCTL="--sysctl net.core.somaxconn=4096"
 
 echo -n "$NAME: "
+docker stop redis && docker rm redis
 docker run --restart=always -h $NAME --name $NAME $SYSCTL --net=party -d $DOCKER_IMAGE </dev/null
