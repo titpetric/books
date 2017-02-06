@@ -1,0 +1,3 @@
+#!/bin/bash
+NAME="pm2-gotwitter"
+docker exec -it $NAME pm2 "$@"

@@ -1,0 +1,3 @@
+#!/bin/bash
+docker rm -f haproxy
+docker run -d --net=party -p 81:80 --name haproxy -v $(pwd)/haproxy:/usr/local/etc/haproxy haproxy:1.7-alpine

@@ -2,4 +2,6 @@
 NAME="pm2-gotwitter"
 cp process.yml app/process.yml
 docker rm -f $NAME
-docker run --rm --name=$NAME -p 81:3000 -v $(pwd)/app:/app keymetrics/pm2-docker-alpine "$@"
+docker run --net=party -d --name=$NAME \
+	-v $(pwd)/app:/app \
+	keymetrics/pm2-docker-alpine

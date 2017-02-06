@@ -1,8 +1,10 @@
 apps:
   - script: ./gotwitter
-  - name: 'gotwitter'
-  - interpreter: none
-  - x: true
-  - instances: 2
-  - exec_mode: cluster
-  - watch: true
+    name: 'gotwitter'
+    interpreter: none
+    execute-command: true
+    instances: 2
+    exec_mode: fork
+    watch: false
+    out_file: /dev/stdout
+    error_file: /dev/stderr
