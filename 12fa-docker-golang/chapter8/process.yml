@@ -1,0 +1,8 @@
+apps:
+  - script: ./gotwitter
+  - name: 'gotwitter'
+  - interpreter: none
+  - x: true
+  - instances: 2
+  - exec_mode: cluster
+  - watch: true
