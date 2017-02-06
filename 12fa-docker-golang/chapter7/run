@@ -1,2 +1,2 @@
 #!/bin/bash
-docker run --net=party --rm -it -p 8080:8080 -v `pwd`:/go/src/app -w /go/src/app golang go run main.go
+docker run --net=party --rm -it -p 8080:3000 -v `pwd`:/go/src/app -w /go/src/app golang:1.8-alpine go run main.go
