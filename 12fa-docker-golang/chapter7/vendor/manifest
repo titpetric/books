@@ -8,6 +8,14 @@
 			"revision": "908534c8b97586a4597e3fa195875d2d26502b97",
 			"branch": "master",
 			"notests": true
+		},
+		{
+			"importpath": "github.com/namsral/flag",
+			"repository": "https://github.com/namsral/flag",
+			"vcs": "git",
+			"revision": "7fa59bdb55485001d702d9b6e15367cdf26bfde8",
+			"branch": "master",
+			"notests": true
 		}
 	]
 }
