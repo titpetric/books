@@ -1,18 +1,22 @@
 package main
 
 import (
-	"app/api"
-	"app/common"
-	"flag"
+	"fmt"
 	"log"
 	"net/http"
+
+	"app/api"
+	"app/common"
+
+	"github.com/namsral/flag"
 )
 
 func main() {
 	// set up flags
 	var (
-		port  = flag.String("port", "8080", "Listen port for server")
-		redis = flag.String("redis", "redis:6379", "Redis address (host:port)")
+		port            = flag.Int("port", 3000, "Listen port for server")
+		nodeAppInstance = flag.Int("node-app-instance", 0, "PM2 application instance")
+		redis           = flag.String("redis", "redis:6379", "Redis address (host:port)")
 	)
 	flag.Parse()
 
@@ -28,8 +32,8 @@ func main() {
 	http.Handle("/", http.FileServer(http.Dir("./public_html")))
 
 	// start up http server
-	log.Printf("Ready and listening on port " + *port + "\n")
-	if err := http.ListenAndServe(":"+*port, nil); err != nil {
+	log.Printf("Ready and listening on port %d + %d\n", *port, *nodeAppInstance)
+	if err := http.ListenAndServe(fmt.Sprintf(":%d", *port+*nodeAppInstance), nil); err != nil {
 		panic(err)
 	}
 }
