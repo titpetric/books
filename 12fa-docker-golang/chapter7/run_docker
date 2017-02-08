@@ -1,0 +1,21 @@
+#!/bin/bash
+docker rm -f gotwitter
+docker run --net=party -e PORT=2000 --name=gotwitter -d -p 8080:2000 gotwitter
+PREVSTATE=""
+while true; do
+	STATE=$(docker inspect gotwitter | jq -r '.[].State.Health.Status')
+	if [[ $STATE == $PREVSTATE ]]; then
+		echo -n "."
+	else
+		if [ ! -z $PREVSTATE ]; then
+			echo
+		fi
+		PREVSTATE=$STATE
+		echo -n "State: $STATE "
+	fi
+	if [[ $STATE == "healthy" ]]; then
+		echo
+		exit 0
+	fi
+	sleep 1
+done
