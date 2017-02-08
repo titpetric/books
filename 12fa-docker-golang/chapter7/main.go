@@ -24,6 +24,10 @@ func main() {
 	r := common.NewRedis(common.RedisAddress(*redis))
 	r.Save()
 
+	// set up a basic healthcheck
+	health := api.Health{}
+	health.Register()
+
 	// set up twitter api
 	apiTwitter := api.Twitter{}
 	apiTwitter.Register()
