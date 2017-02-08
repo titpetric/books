@@ -1,0 +1,11 @@
+#!/bin/bash
+NAME="registry"
+DOCKER_IMAGE="registry:2"
+# by default storage is in ../storage
+STORAGE=$(dirname $(dirname $(readlink -f $0)))/storage
+if [ ! -d "$STORAGE" ]; then
+	mkdir $STORAGE
+fi
+# stop and remove existing instance
+docker stop $NAME && docker rm $NAME
+docker run -d -p 5000:5000 --restart=always --name $NAME -v $STORAGE:/var/lib/registry $DOCKER_IMAGE
