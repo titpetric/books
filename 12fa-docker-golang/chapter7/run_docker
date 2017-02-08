@@ -1,9 +1,11 @@
 #!/bin/bash
-docker rm -f gotwitter
-docker run --net=party -e PORT=2000 --name=gotwitter -d -p 8080:2000 gotwitter
+NAME="gotwitter"
+DOCKER_IMAGE="titpetric/gotwitter"
+docker rm -f $NAME
+docker run --net=party -e PORT=2000 --name=$NAME -d -p 8080:2000 $DOCKER_IMAGE
 PREVSTATE=""
 while true; do
-	STATE=$(docker inspect gotwitter | jq -r '.[].State.Health.Status')
+	STATE=$(docker inspect $NAME | jq -r '.[].State.Health.Status')
 	if [[ $STATE == $PREVSTATE ]]; then
 		echo -n "."
 	else
