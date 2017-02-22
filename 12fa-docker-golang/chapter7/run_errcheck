@@ -1,0 +1,3 @@
+#!/bin/bash
+DOCKER_IMAGE="titpetric/golang:errcheck"
+docker run -e GOPATH=/go --net=party --rm=true -it -v `pwd`:/go/src/app $DOCKER_IMAGE errcheck ./... | grep -v vendor/

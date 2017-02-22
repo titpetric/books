@@ -6,6 +6,8 @@ satisfy individual guidelines of the 12-Factor app. The criteria for
 inclusion will be based on idiomatic guidelines and the traction which
 individual projects managed to get.
 
+Leanpub: [12 Factor Applications with Docker and Go](https://leanpub.com/12fa-docker-golang)
+
 ## I. Codebase - One codebase tracked in revision control, many deploys
 
 The obvious choice in regards to codebase today is git. There are two
@@ -55,7 +57,6 @@ these apps, and more. I'd like to cover a few things:
 
 1. GitLab CI,
 2. [Buildkite](https://buildkite.com/),
-3. [Stevedore](https://github.com/zulily/stevedore)
 
 ### Release
 

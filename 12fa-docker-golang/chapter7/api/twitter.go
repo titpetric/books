@@ -6,15 +6,18 @@ import "encoding/json"
 import "app/common"
 import "github.com/garyburd/redigo/redis"
 
+// Twitter post message API
 type Twitter struct {
 }
 
+// TwitterMessage - Structure of a post
 type TwitterMessage struct {
 	Message string
 	Time    time.Time
 }
 
-func (t Twitter) Register() {
+// Register Twitter API endpoints
+func (t *Twitter) Register() {
 	http.HandleFunc("/api/twitter/list", func(w http.ResponseWriter, r *http.Request) {
 		response, err := t.List()
 		common.Respond(w, response, err)
@@ -22,16 +25,18 @@ func (t Twitter) Register() {
 	http.HandleFunc("/api/twitter/add", func(w http.ResponseWriter, r *http.Request) {
 		message := t.Message(r.FormValue("message"))
 		response := "OK"
-		err := t.Add(message)
+		err := t.Store(message)
 		common.Respond(w, response, err)
 	})
 }
 
-func (t Twitter) Message(message string) *TwitterMessage {
+// Message creates a new TwitterMessage
+func (t *Twitter) Message(message string) *TwitterMessage {
 	return &TwitterMessage{message, time.Now()}
 }
 
-func (t Twitter) List() ([]*TwitterMessage, error) {
+// List TwitterMessages for pagination
+func (t *Twitter) List() ([]*TwitterMessage, error) {
 	results := make([]*TwitterMessage, 0)
 
 	conn, err := common.GetRedis()
@@ -41,22 +46,23 @@ func (t Twitter) List() ([]*TwitterMessage, error) {
 
 	messages, err := redis.Strings(conn.Do("LRANGE", "twitter", 0, 4))
 	for _, message := range messages {
-		message_json := &TwitterMessage{}
-		err = json.Unmarshal([]byte(message), message_json)
+		messageJSON := &TwitterMessage{}
+		err = json.Unmarshal([]byte(message), messageJSON)
 		if err != nil {
 			continue
 		}
-		results = append(results, message_json)
+		results = append(results, messageJSON)
 	}
 	return results, nil
 }
 
-func (t Twitter) Add(message *TwitterMessage) error {
+// Store a new TwitterMessage
+func (t *Twitter) Store(message *TwitterMessage) error {
 	conn, err := common.GetRedis()
 	if err != nil {
 		return err
 	}
-	message_json, _ := json.MarshalIndent(message, "", "\t")
-	_, err = conn.Do("LPUSH", "twitter", string(message_json[:]))
+	messageJSON, _ := json.MarshalIndent(message, "", "\t")
+	_, err = conn.Do("LPUSH", "twitter", string(messageJSON[:]))
 	return err
 }
