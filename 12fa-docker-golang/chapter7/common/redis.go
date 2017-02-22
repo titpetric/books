@@ -9,49 +9,47 @@ type Redis struct {
 	connectTimeout, readTimeout, writeTimeout time.Duration
 }
 
-type RedisOption struct {
-	f func(*Redis)
-}
+type RedisOption func(*Redis)
 
 func RedisAddress(address string) RedisOption {
-	return RedisOption{func(do *Redis) {
+	return func(do *Redis) {
 		do.address = address
-	}}
+	}
 }
 
 func RedisConnectTimeout(timeout time.Duration) RedisOption {
-	return RedisOption{func(do *Redis) {
+	return func(do *Redis) {
 		do.connectTimeout = timeout
-	}}
+	}
 }
 
 func RedisReadTimeout(timeout time.Duration) RedisOption {
-	return RedisOption{func(do *Redis) {
+	return func(do *Redis) {
 		do.readTimeout = timeout
-	}}
+	}
 }
 func RedisWriteTimeout(timeout time.Duration) RedisOption {
-	return RedisOption{func(do *Redis) {
+	return func(do *Redis) {
 		do.writeTimeout = timeout
-	}}
+	}
 }
 
-var (
-	redisConnections map[string]*Redis = make(map[string]*Redis, 0)
-)
-
 func NewRedis(options ...RedisOption) *Redis {
-	redis := &Redis{}
-	redis.conn = nil
-	redis.address = "redis:6379"
-	redis.connectTimeout = time.Second
-	redis.readTimeout = time.Second
-	redis.writeTimeout = time.Second
+	redis := &Redis{
+		address:        "redis:6379",
+		connectTimeout: time.Second,
+		readTimeout:    time.Second,
+		writeTimeout:   time.Second,
+	}
 	for _, option := range options {
-		option.f(redis)
+		option(redis)
 	}
 	return redis
 }
+
+var (
+	redisConnections = make(map[string]*Redis, 0)
+)
 
 func (t *Redis) Save(names ...string) {
 	connection := "default"
