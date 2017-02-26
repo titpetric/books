@@ -6,7 +6,7 @@ ADD build/ /app/
 
 ENV PORT=3000
 
-HEALTHCHECK --interval=60s --timeout=10s CMD curl -f http://localhost:$PORT/api/health || exit 1
+HEALTHCHECK --interval=60s --timeout=60s CMD curl -f http://localhost:$PORT/api/health || exit 1
 
 WORKDIR /app
 
