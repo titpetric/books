@@ -1,0 +1,140 @@
+{
+	"version": 0,
+	"dependencies": [
+		{
+			"importpath": "github.com/apex/log",
+			"repository": "https://github.com/apex/log",
+			"vcs": "git",
+			"revision": "a0bcece0a725e2b62f01d948b25ba3c22ebfb792",
+			"branch": "master",
+			"notests": true
+		},
+		{
+			"importpath": "github.com/aphistic/golf",
+			"repository": "https://github.com/aphistic/golf",
+			"vcs": "git",
+			"revision": "9a6a5804b74b01193a6989786e63a1580d470f8f",
+			"branch": "master",
+			"notests": true
+		},
+		{
+			"importpath": "github.com/aws/aws-sdk-go/aws",
+			"repository": "https://github.com/aws/aws-sdk-go",
+			"vcs": "git",
+			"revision": "baba9e786eae5ba978f2007f8e718557b29157c8",
+			"branch": "master",
+			"path": "aws",
+			"notests": true
+		},
+		{
+			"importpath": "github.com/aws/aws-sdk-go/private/protocol",
+			"repository": "https://github.com/aws/aws-sdk-go",
+			"vcs": "git",
+			"revision": "baba9e786eae5ba978f2007f8e718557b29157c8",
+			"branch": "master",
+			"path": "private/protocol",
+			"notests": true
+		},
+		{
+			"importpath": "github.com/aws/aws-sdk-go/service/kinesis",
+			"repository": "https://github.com/aws/aws-sdk-go",
+			"vcs": "git",
+			"revision": "baba9e786eae5ba978f2007f8e718557b29157c8",
+			"branch": "master",
+			"path": "service/kinesis",
+			"notests": true
+		},
+		{
+			"importpath": "github.com/aws/aws-sdk-go/service/sts",
+			"repository": "https://github.com/aws/aws-sdk-go",
+			"vcs": "git",
+			"revision": "baba9e786eae5ba978f2007f8e718557b29157c8",
+			"branch": "master",
+			"path": "service/sts",
+			"notests": true
+		},
+		{
+			"importpath": "github.com/aws/aws-sdk-go/vendor/github.com/go-ini/ini",
+			"repository": "https://github.com/aws/aws-sdk-go",
+			"vcs": "git",
+			"revision": "baba9e786eae5ba978f2007f8e718557b29157c8",
+			"branch": "master",
+			"path": "vendor/github.com/go-ini/ini",
+			"notests": true
+		},
+		{
+			"importpath": "github.com/aws/aws-sdk-go/vendor/github.com/jmespath/go-jmespath",
+			"repository": "https://github.com/aws/aws-sdk-go",
+			"vcs": "git",
+			"revision": "baba9e786eae5ba978f2007f8e718557b29157c8",
+			"branch": "master",
+			"path": "vendor/github.com/jmespath/go-jmespath",
+			"notests": true
+		},
+		{
+			"importpath": "github.com/go-logfmt/logfmt",
+			"repository": "https://github.com/go-logfmt/logfmt",
+			"vcs": "git",
+			"revision": "390ab7935ee28ec6b286364bba9b4dd6410cb3d5",
+			"branch": "master",
+			"notests": true
+		},
+		{
+			"importpath": "github.com/jpillora/backoff",
+			"repository": "https://github.com/jpillora/backoff",
+			"vcs": "git",
+			"revision": "06c7a16c845dc8e0bf575fafeeca0f5462f5eb4d",
+			"branch": "master",
+			"notests": true
+		},
+		{
+			"importpath": "github.com/kr/logfmt",
+			"repository": "https://github.com/kr/logfmt",
+			"vcs": "git",
+			"revision": "b84e30acd515aadc4b783ad4ff83aff3299bdfe0",
+			"branch": "master",
+			"notests": true
+		},
+		{
+			"importpath": "github.com/pkg/errors",
+			"repository": "https://github.com/pkg/errors",
+			"vcs": "git",
+			"revision": "ff09b135c25aae272398c51a07235b90a75aa4f0",
+			"branch": "master",
+			"notests": true
+		},
+		{
+			"importpath": "github.com/rogpeppe/fastuuid",
+			"repository": "https://github.com/rogpeppe/fastuuid",
+			"vcs": "git",
+			"revision": "6724a57986aff9bff1a1770e9347036def7c89f6",
+			"branch": "master",
+			"notests": true
+		},
+		{
+			"importpath": "github.com/satori/go.uuid",
+			"repository": "https://github.com/satori/go.uuid",
+			"vcs": "git",
+			"revision": "5bf94b69c6b68ee1b541973bb8e1144db23a194b",
+			"branch": "master",
+			"notests": true
+		},
+		{
+			"importpath": "github.com/tj/go-elastic/batch",
+			"repository": "https://github.com/tj/go-elastic",
+			"vcs": "git",
+			"revision": "9a9a2a21e071e6e38f236740c3b650e7316ae67e",
+			"branch": "master",
+			"path": "/batch",
+			"notests": true
+		},
+		{
+			"importpath": "github.com/tj/go-kinesis",
+			"repository": "https://github.com/tj/go-kinesis",
+			"vcs": "git",
+			"revision": "28ff32f8b54954f8ea365fa278bcfcec35ec094b",
+			"branch": "master",
+			"notests": true
+		}
+	]
+}

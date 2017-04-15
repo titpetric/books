@@ -1,0 +1,13 @@
+#!/bin/bash
+function gvt_fetch {
+	if [ ! -d "vendor/$1" ]; then
+		gvt fetch $1
+	fi
+}
+
+gvt_fetch "github.com/apex/log"
+gvt_fetch "github.com/apex/log/handlers/text"
+gvt_fetch "github.com/apex/log/handlers/papertrail"
+gvt_fetch "github.com/apex/log/handlers/multi"
+
+go run main.go
