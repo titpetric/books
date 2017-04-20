@@ -1,0 +1,2 @@
+#!/bin/bash
+docker run -h viper --rm -v $(pwd):/go/src/app -w /go/src/app golang:1.8-alpine go run main.go
