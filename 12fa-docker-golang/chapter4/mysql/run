@@ -2,10 +2,13 @@
 if [ ! -d "vendor" ]; then
 	gvt fetch "github.com/go-sql-driver/mysql"
 	gvt fetch "github.com/jmoiron/sqlx"
+	gvt fetch "github.com/namsral/flag"
+	gvt fetch "github.com/spf13/pflag"
 fi
 
 FILES=$(ls *.go | sort)
 for FILE in $FILES; do
+	echo "##" $FILE
 	docker run --net=party --rm -it -v $(pwd):/go/src/app -w /go/src/app golang:1.8-alpine go run $FILE | tee "$FILE.txt"
 done
 
