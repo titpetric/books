@@ -1,0 +1,21 @@
+{
+	"version": 0,
+	"dependencies": [
+		{
+			"importpath": "github.com/go-sql-driver/mysql",
+			"repository": "https://github.com/go-sql-driver/mysql",
+			"vcs": "git",
+			"revision": "9dee4ca50b83acdf57a35fb9e6fb4be640afa2f3",
+			"branch": "master",
+			"notests": true
+		},
+		{
+			"importpath": "github.com/jmoiron/sqlx",
+			"repository": "https://github.com/jmoiron/sqlx",
+			"vcs": "git",
+			"revision": "3564e3a314b957a161fefa0e7aea85b4d741c94e",
+			"branch": "master",
+			"notests": true
+		}
+	]
+}
