@@ -9,9 +9,10 @@ import (
 
 // Database connection factory object
 type Database struct {
+	// hold database connection
 	conn *sqlx.DB
 	err  error
-
+	// hold database config
 	dsn *string
 }
 
