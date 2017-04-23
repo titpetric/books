@@ -16,6 +16,22 @@
 			"revision": "3564e3a314b957a161fefa0e7aea85b4d741c94e",
 			"branch": "master",
 			"notests": true
+		},
+		{
+			"importpath": "github.com/namsral/flag",
+			"repository": "https://github.com/namsral/flag",
+			"vcs": "git",
+			"revision": "7fa59bdb55485001d702d9b6e15367cdf26bfde8",
+			"branch": "master",
+			"notests": true
+		},
+		{
+			"importpath": "github.com/spf13/pflag",
+			"repository": "https://github.com/spf13/pflag",
+			"vcs": "git",
+			"revision": "2300d0f8576fe575f71aaa5b9bbe4e1b0dc2eb51",
+			"branch": "master",
+			"notests": true
 		}
 	]
 }
