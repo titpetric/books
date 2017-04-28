@@ -7,21 +7,17 @@ import (
 	"os"
 
 	"app/service"
+
+	"github.com/jmoiron/sqlx"
 )
 
 type databaseName struct {
 	Name string `db:"Database"`
 }
 
-func listDatabases(db *service.Database) ([]databaseName, error) {
+func listDatabases(db *sqlx.DB) ([]databaseName, error) {
 	result := []databaseName{}
-	conn, err := db.Get()
-	if err != nil {
-		return result, err
-	}
-	defer db.Close()
-
-	err = conn.Select(&result, "show databases")
+	err := db.Select(&result, "show databases")
 	return result, err
 }
 
@@ -29,13 +25,19 @@ func main() {
 	flags := flag.NewFlagSet("default", flag.ContinueOnError)
 
 	// this is just a factory struct
-	database := &service.Database{}
-	database.Flags("dsn", "DSN for database connection", flags)
+	dbFactory := &service.Database{}
+	dbFactory.Flags("dsn", "DSN for database connection", flags)
 
 	flags.Parse(os.Args[1:])
 
+	db, err := dbFactory.Get();
+	if err != nil {
+		log.Println("Error when connecting:", err)
+		return
+	}
+
 	fmt.Println("Listing databases")
-	databases, err := listDatabases(database)
+	databases, err := listDatabases(db)
 	if err != nil {
 		log.Println("Error when listing databases:", err)
 		return

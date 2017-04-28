@@ -9,9 +9,6 @@ import (
 
 // Database connection factory object
 type Database struct {
-	// hold database connection
-	conn *sqlx.DB
-	err  error
 	// hold database config
 	dsn *string
 }
@@ -45,11 +42,5 @@ func (r *Database) Get() (*sqlx.DB, error) {
 		}
 	}
 	dsn = strings.Replace(dsn, "?&", "?", 1)
-	r.conn, r.err = sqlx.Open("mysql", dsn)
-	return r.conn, r.err
-}
-
-// Close releases an existing database connection
-func (r *Database) Close() {
-	r.conn.Close()
+	return sqlx.Open("mysql", dsn)
 }
