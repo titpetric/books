@@ -1,0 +1,17 @@
+#!/bin/bash
+if [ ! -d "vendor" ]; then
+	gvt fetch "github.com/garyburd/redigo/redis"
+fi
+
+FILES=$(ls *.go | sort)
+for FILE in $FILES; do
+	echo "##" $FILE
+	docker run --net=party --rm -it -v $(pwd):/go/src/app -w /go/src/app golang:1.8-alpine go run $FILE | tee "$FILE.txt"
+done
+
+# strip \r
+sed -i 's/\cM//g' *txt
+# strip trailing spaces/lines
+sed -i -e :a -e '/^\n*$/{$d;N;};/\n$/ba' *txt
+# strip off final newline
+truncate -s -1 *txt
