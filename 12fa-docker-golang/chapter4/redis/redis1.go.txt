@@ -1,0 +1,3 @@
+[0.0000ms] Starting
+[0.0293ms] Sending PING
+[11.5352ms] Response PONG, err <nil>
