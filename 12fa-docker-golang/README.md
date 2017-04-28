@@ -15,8 +15,8 @@ aspects which are interesting here. One is the software being used
 on the server side, and options for self-hosting (GitLab, Gogs) and the
 other is development methodologies for teams.
 
-1. Self hosted git options [GitLab](https://about.gitlab.com/), [Gogs](https://gogs.io/)
-2. Workflows for development with git - [Feature branches](https://www.atlassian.com/git/tutorials/comparing-workflows)
+- [x] Self hosted git option: [Gogs](https://gogs.io/)
+- [x] Workflows for development with git - [Feature branches](https://www.atlassian.com/git/tutorials/comparing-workflows)
 
 ## II. Dependencies - Explicitly declare and isolate dependencies
 
@@ -30,22 +30,22 @@ in such a way, that reuse from other projects is possible.
 
 ## III. Config - Store config in the environment
 
-1. [spf13/viper](https://github.com/spf13/viper)
-2. [namsral/flag](https://github.com/namsral/flag)
-3. [joho/godotenv](https://github.com/joho/godotenv)
+- [x] [spf13/viper](https://github.com/spf13/viper)
+- [x] [namsral/flag](https://github.com/namsral/flag)
+- [x] [joho/godotenv](https://github.com/joho/godotenv)
 
-Most likely only `spf13/viper` will be covered due to terrific adption by several large
-projects. The other packages are listed as simpler options which may be considered for
+The project `spf13/viper` will be covered due to terrific adption by several large projects.
+The other packages are listed as simpler options which may be considered for a
 nano-services approach, where only few configuration/environment variables are needed.
 
 ## IV. Backing services - Treat backing services as attached resources
 
 Demonstrate use of common backing services.
 
-1. MySQL [jmoiron/sqlx](https://github.com/jmoiron/sqlx)
-2. Redis [garyburd/redigo](https://github.com/garyburd/redigo)
-3. Minio/S3 [minio/minio-go](https://github.com/minio/minio-go)
-4. Error logging: [Airbrake](https://github.com/airbrake/gobrake), [Errbit](https://github.com/errbit/errbit), [Sentry](https://github.com/getsentry/raven-go), [Rollbar](https://github.com/stvp/rollbar)
+- [ ] MySQL [jmoiron/sqlx](https://github.com/jmoiron/sqlx)
+- [ ] Redis [garyburd/redigo](https://github.com/garyburd/redigo)
+- [ ] Minio/S3 [minio/minio-go](https://github.com/minio/minio-go)
+- [ ] Error logging: [Airbrake](https://github.com/airbrake/gobrake), [Errbit](https://github.com/errbit/errbit), [Sentry](https://github.com/getsentry/raven-go), [Rollbar](https://github.com/stvp/rollbar)
 
 ## V. Build, release, run - Strictly separate build and run stages
 
@@ -55,17 +55,24 @@ these apps, and more. I'd like to cover a few things:
 
 ### Build
 
-1. GitLab CI,
-2. [Buildkite](https://buildkite.com/),
+Set up and use a CI system which fully supports Docker.
+
+- [x] Codeship CI
+- [ ] GitLab CI?
+- [ ] [Buildkite](https://buildkite.com/)?
 
 ### Release
 
-1. Setting up a docker registry [docker/registry](https://docs.docker.com/registry/),
-2. Using the GitLab container registry,
-3. Using [Amazon EC2 Container registry (ECR)](https://aws.amazon.com/ecr/)
-4. Building your own release system
+This is very variable and subject to changes.
+
+- [ ] Setting up a docker registry [docker/registry](https://docs.docker.com/registry/),
+- [ ] Using the GitLab container registry,
+- [ ] Using [Amazon EC2 Container registry (ECR)](https://aws.amazon.com/ecr/)
+- [ ] Building your own release system
 
 ### Run
+
+Subject to change.
 
 1. Docker to run go applications, scaling with docker swarm,
 2. Migrating your container(s) to the cloud
