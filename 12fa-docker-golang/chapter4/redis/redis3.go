@@ -1,9 +1,9 @@
 package main
 
 import (
-	"os"
-	"fmt"
 	"flag"
+	"fmt"
+	"os"
 
 	"app/service"
 )
@@ -28,7 +28,7 @@ func main() {
 
 	go func() {
 		conn := redis.Get()
-		defer conn.Close();
+		defer conn.Close()
 
 		fmt.Printf("[%.4f] Run sleep 100ms\n", service.Now())
 		sleep1, err := conn.Do("DEBUG", "SLEEP", "0.1")
@@ -40,7 +40,7 @@ func main() {
 
 	go func() {
 		conn := redis.Get()
-		defer conn.Close();
+		defer conn.Close()
 
 		fmt.Printf("[%.4f] Run sleep 200ms\n", service.Now())
 		sleep2, err := conn.Do("DEBUG", "SLEEP", "0.2")

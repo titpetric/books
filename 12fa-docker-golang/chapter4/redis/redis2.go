@@ -1,9 +1,9 @@
 package main
 
 import (
-	"os"
-	"fmt"
 	"flag"
+	"fmt"
+	"os"
 
 	"app/service"
 )
@@ -18,7 +18,6 @@ func main() {
 
 	// parse flags
 	flags.Parse(os.Args[1:])
-
 
 	redis.Do("PING")
 	fmt.Printf("[%.4f] Starting\n", service.Now())
