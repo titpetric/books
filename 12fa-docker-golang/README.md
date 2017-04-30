@@ -42,10 +42,9 @@ nano-services approach, where only few configuration/environment variables are n
 
 Demonstrate use of common backing services.
 
-- [ ] MySQL [jmoiron/sqlx](https://github.com/jmoiron/sqlx)
-- [ ] Redis [garyburd/redigo](https://github.com/garyburd/redigo)
-- [ ] Minio/S3 [minio/minio-go](https://github.com/minio/minio-go)
-- [ ] Error logging: [Airbrake](https://github.com/airbrake/gobrake), [Errbit](https://github.com/errbit/errbit), [Sentry](https://github.com/getsentry/raven-go), [Rollbar](https://github.com/stvp/rollbar)
+- [x] MySQL [jmoiron/sqlx](https://github.com/jmoiron/sqlx)
+- [x] Redis [garyburd/redigo](https://github.com/garyburd/redigo)
+- ~~Minio/S3 [minio/minio-go](https://github.com/minio/minio-go)~~
 
 ## V. Build, release, run - Strictly separate build and run stages
 
@@ -58,24 +57,25 @@ these apps, and more. I'd like to cover a few things:
 Set up and use a CI system which fully supports Docker.
 
 - [x] Codeship CI
-- [ ] GitLab CI?
-- [ ] [Buildkite](https://buildkite.com/)?
+- ~~GitLab CI?~~
+- ~~[Buildkite](https://buildkite.com/)~~
 
 ### Release
 
 This is very variable and subject to changes.
 
-- [ ] Setting up a docker registry [docker/registry](https://docs.docker.com/registry/),
-- [ ] Using the GitLab container registry,
-- [ ] Using [Amazon EC2 Container registry (ECR)](https://aws.amazon.com/ecr/)
-- [ ] Building your own release system
+- [x] Setting up a docker registry [docker/registry](https://docs.docker.com/registry/),
+- ~~Using the GitLab container registry,~~
+- [x] Registry review: [Amazon ECR](https://aws.amazon.com/ecr/), Google GCR, Docker Hub, Quay.io
+- [x] Building your own release system (Codeship, release to Docker Hub and Github)
 
 ### Run
 
 Subject to change.
 
-1. Docker to run go applications, scaling with docker swarm,
-2. Migrating your container(s) to the cloud
+- [x] Docker to run go applications, scaling with docker swarm,
+- [x] Migrating your container(s) to the cloud (Digital Ocean `doctl`, in intro)
+- [ ] set up a scalable docker swarm with doctl?
 
 ## VI. Processes - Execute the app as one or more stateless processes
 
@@ -137,5 +137,8 @@ Output logs appropriately to stdout/stderr and have external tooling to review t
 when applicable. There are tools that work within the Docker ecosystem like [Rancher](http://rancher.com/),
 and there are external tools like [Logstash](https://www.elastic.co/products/logstash) which may
 provide insight to your logs.
+
+- [x] Use Papertrail from Docker (stdout),
+- [x] Papertrail as a backing-service
 
 ## XII. Admin processes - Run admin/management tasks as one-off processes
