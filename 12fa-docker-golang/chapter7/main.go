@@ -6,7 +6,7 @@ import (
 	"net/http"
 
 	"app/api"
-	"app/common"
+	"app/services"
 
 	"github.com/namsral/flag"
 )
@@ -21,7 +21,7 @@ func main() {
 	flag.Parse()
 
 	// set up config
-	r := common.NewRedis(common.RedisAddress(*redis))
+	r := services.NewRedis(services.RedisAddress(*redis))
 	r.Save()
 
 	// set up a basic healthcheck

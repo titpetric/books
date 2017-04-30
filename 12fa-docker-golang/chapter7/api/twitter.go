@@ -3,7 +3,7 @@ package api
 import "time"
 import "net/http"
 import "encoding/json"
-import "app/common"
+import "app/services"
 import "github.com/garyburd/redigo/redis"
 
 // Twitter post message API
@@ -20,13 +20,13 @@ type TwitterMessage struct {
 func (t *Twitter) Register() {
 	http.HandleFunc("/api/twitter/list", func(w http.ResponseWriter, r *http.Request) {
 		response, err := t.List()
-		common.Respond(w, response, err)
+		services.Respond(w, response, err)
 	})
 	http.HandleFunc("/api/twitter/add", func(w http.ResponseWriter, r *http.Request) {
 		message := t.Message(r.FormValue("message"))
 		response := "OK"
 		err := t.Store(message)
-		common.Respond(w, response, err)
+		services.Respond(w, response, err)
 	})
 }
 
@@ -39,7 +39,7 @@ func (t *Twitter) Message(message string) *TwitterMessage {
 func (t *Twitter) List() ([]*TwitterMessage, error) {
 	results := make([]*TwitterMessage, 0)
 
-	conn, err := common.GetRedis()
+	conn, err := services.GetRedis()
 	if err != nil {
 		return nil, err
 	}
@@ -58,7 +58,7 @@ func (t *Twitter) List() ([]*TwitterMessage, error) {
 
 // Store a new TwitterMessage
 func (t *Twitter) Store(message *TwitterMessage) error {
-	conn, err := common.GetRedis()
+	conn, err := services.GetRedis()
 	if err != nil {
 		return err
 	}

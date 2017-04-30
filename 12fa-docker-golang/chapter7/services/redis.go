@@ -1,4 +1,4 @@
-package common
+package services
 
 import "time"
 import "github.com/garyburd/redigo/redis"
