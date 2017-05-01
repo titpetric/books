@@ -6,6 +6,11 @@ link to give you $10 in credit](https://m.do.co/c/f6a67e30a1f4).
 
 This requires that you have [doctl](https://github.com/digitalocean/doctl) installed.
 
+The scripts are produced for:
+
+1. [12 Factor Applications with Docker and Go](https://leanpub.com/12fa-docker-golang)
+2. [Upcoming article on scene-si.org](https://scene-si.org)
+
 ## Nodes
 
 There are two types of nodes that exist in a docker swarm.
