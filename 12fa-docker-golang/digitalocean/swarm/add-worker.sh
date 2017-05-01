@@ -11,14 +11,6 @@ if [ ! -d "cloud-init" ]; then
 	mkdir cloud-init
 fi
 
-## creating a swarm
-SCRIPT_CREATE="#!/bin/bash
-ufw allow 2377/tcp
-export PUBLIC_IPV4=\$(curl -s http://169.254.169.254/metadata/v1/interfaces/public/0/ipv4/address)
-docker swarm init --advertise-addr \"\${PUBLIC_IPV4}:2377\""
-
-echo "$SCRIPT_CREATE" > cloud-init/create.sh
-
 ## joining a swarm
 if [ ! -z "$IPADDR" ]; then
 	TOKEN=$(ssh $IPADDR docker swarm join-token -q worker)
