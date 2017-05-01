@@ -54,9 +54,10 @@ node is removed from the swarm, after which, the digital ocean droplet is purged
 
 So:
 
-1. Demote manager to worker,
-2. Remove worker node from swarm,
-3. Purge droplet
+1. Drain docker containers from manager,
+2. Demote manager to worker,
+3. Purge droplet,
+4. Remove node from swarm
 
 All this can be done by running:
 
