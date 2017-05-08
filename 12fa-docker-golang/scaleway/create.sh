@@ -5,6 +5,6 @@ scw _patch $(scw create --name=asx --commercial-type=X64-2GB ubuntu-xenial | sed
 echo "Starting server asx"
 scw start -w asx
 ADDR=$(./get-ip.sh)
-scp scripts/* $ADDR:/root
+scp swarm/scripts/* $ADDR:/root
 ssh $ADDR /root/bootstrap.sh
 echo "Finished."
