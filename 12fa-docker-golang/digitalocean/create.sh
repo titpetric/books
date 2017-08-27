@@ -6,7 +6,7 @@ if [ "$CHECK" == "0" ]; then
 		--image docker-16-04 \
 		--size 2gb \
 		--region ams3 \
-		--ssh-keys 01:23:45:67:89:0a:bc:de:fe:dc:ba:98:76:54:32:10
+		--ssh-keys $(./ssh-key.sh)
 else
 	echo "Droplet ASX already running"
 fi
