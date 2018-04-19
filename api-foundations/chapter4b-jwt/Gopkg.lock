@@ -35,7 +35,7 @@
   branch = "master"
   name = "github.com/titpetric/factory"
   packages = ["resputil"]
-  revision = "3625e7bf48c136a638014ca91c355b15a02f6366"
+  revision = "b7c7516b149e74ff81a5c82977cb37af10484046"
 
 [solve-meta]
   analyzer-name = "dep"
