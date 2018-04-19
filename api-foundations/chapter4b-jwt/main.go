@@ -5,10 +5,10 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/pkg/errors"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 	"github.com/go-chi/cors"
+	"github.com/pkg/errors"
 
 	"github.com/titpetric/factory/resputil"
 )
@@ -49,7 +49,7 @@ func main() {
 		mux.Use(login.Authenticator())
 		{
 			mux.Get("/time", requestTime)
-			mux.Route("/say", func(r chi.Router) {
+			mux.Route("/say", func(mux chi.Router) {
 				mux.Get("/{name}", requestSay)
 				mux.Get("/", requestSay)
 			})
@@ -62,17 +62,6 @@ func main() {
 		mux.Get("/api/info", func(w http.ResponseWriter, r *http.Request) {
 			owner := login.Decode(r)
 			resputil.JSON(w, owner, errors.New("Not logged in"))
-		})
-
-		// Delete JWT cookie
-		mux.Get("/api/logout", func(w http.ResponseWriter, r *http.Request) {
-			http.SetCookie(w, &http.Cookie{
-				Name:    "jwt",
-				Path:    "/",
-				MaxAge:  -1,
-				Expires: time.Unix(0, 0),
-			})
-			resputil.JSON(w, resputil.Success())
 		})
 	})
 
