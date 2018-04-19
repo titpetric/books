@@ -59,7 +59,7 @@ func main() {
 	// Public API endpoints
 	mux.Group(func(mux chi.Router) {
 		// Print info about claim
-		mux.Get("/api/info", func(w http.ResponseWriter, r *http.Request) {
+		mux.Get("/info", func(w http.ResponseWriter, r *http.Request) {
 			owner := login.Decode(r)
 			resputil.JSON(w, owner, errors.New("Not logged in"))
 		})

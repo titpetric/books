@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"time"
 
 	"net/http"
 
@@ -25,27 +26,28 @@ func (JWT) new() *JWT {
 	return jwt
 }
 
-func (jwt *JWT) Encode(channel string) string {
-	_, tokenString, _ := jwt.tokenAuth.Encode(jwtauth.Claims{jwt.tokenClaim: channel})
+func (jwt *JWT) Encode(id string) string {
+	claims := jwtauth.Claims{}.
+		Set(jwt.tokenClaim, id).
+		SetExpiryIn(30 * time.Second).
+		SetIssuedNow()
+	_, tokenString, _ := jwt.tokenAuth.Encode(claims)
 	return tokenString
-}
-
-func (jwt *JWT) Decode(r *http.Request) string {
-	_, claims, _ := jwtauth.FromContext(r.Context())
-	if val, ok := claims[jwt.tokenClaim]; ok {
-		return val.(string)
-	}
-	return ""
 }
 
 func (jwt *JWT) Verifier() func(http.Handler) http.Handler {
 	return jwtauth.Verifier(jwt.tokenAuth)
 }
 
+func (jwt *JWT) Decode(r *http.Request) string {
+	val, _ := jwt.Authenticate(r)
+	return val
+}
+
 func (jwt *JWT) Authenticate(r *http.Request) (string, error) {
 	token, claims, err := jwtauth.FromContext(r.Context())
 	if err != nil || token == nil {
-		return "", err
+		return "", errors.Wrap(err, "Empty or invalid JWT")
 	}
 	if !token.Valid {
 		return "", errors.New("Invalid JWT")
@@ -53,21 +55,14 @@ func (jwt *JWT) Authenticate(r *http.Request) (string, error) {
 	return claims[jwt.tokenClaim].(string), nil
 }
 
-func (_ *JWT) Authenticator() func(http.Handler) http.Handler {
+func (jwt *JWT) Authenticator() func(http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			token, _, err := jwtauth.FromContext(r.Context())
+			_, err := jwt.Authenticate(r)
 			if err != nil {
-				resputil.JSON(w, errors.Wrap(err, "Error validating JWT"))
+				resputil.JSON(w, err)
 				return
 			}
-
-			if token == nil || !token.Valid {
-				resputil.JSON(w, errors.New("Empty or invalid JWT"))
-				return
-			}
-
-			// Token is authenticated, pass it through
 			next.ServeHTTP(w, r)
 		})
 	}
